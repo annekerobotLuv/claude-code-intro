@@ -1,0 +1,30 @@
+{
+  "name": "Claude Code Workshop",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": { "version": "20" }
+  },
+  "postCreateCommand": "npm install -g @anthropic-ai/claude-code && pip install --upgrade pip && pip install streamlit",
+  "containerEnv": {
+    "ANTHROPIC_MODEL": "claude-sonnet-4-6"
+  },
+  "forwardPorts": [3000, 5000, 5173, 8000, 8501],
+  "portsAttributes": {
+    "3000": { "label": "Web (Node)", "onAutoForward": "openBrowser" },
+    "5000": { "label": "Web (Flask)", "onAutoForward": "openBrowser" },
+    "5173": { "label": "Web (Vite)", "onAutoForward": "openBrowser" },
+    "8000": { "label": "Web (Python)", "onAutoForward": "openBrowser" },
+    "8501": { "label": "Streamlit", "onAutoForward": "openBrowser" }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python"
+      ]
+    }
+  },
+  "hostRequirements": {
+    "cpus": 2,
+    "memory": "8gb"
+  }
+}

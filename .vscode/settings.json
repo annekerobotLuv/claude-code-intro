@@ -1,0 +1,6 @@
+{
+  "terminal.integrated.defaultProfile.linux": "bash",
+  "terminal.integrated.fontSize": 14,
+  "workbench.startupEditor": "readme",
+  "files.autoSave": "afterDelay"
+}
