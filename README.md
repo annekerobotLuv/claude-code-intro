@@ -14,7 +14,8 @@ Once the editor loads in your browser:
 
 1. Open the terminal (bottom panel — or press `` Ctrl+` ``)
 2. Type `claude` and press Enter
-3. Tell Claude what you want to build
+3. If it asks "Do you want to use this API key?" → pick **Yes** (option 1). It defaults to "No" but Yes is correct here.
+4. Tell Claude what you want to build
 
 That's it. Claude writes the code, you run it, you change your mind, you iterate.
 
