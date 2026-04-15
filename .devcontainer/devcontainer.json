@@ -4,7 +4,7 @@
   "features": {
     "ghcr.io/devcontainers/features/node:1": { "version": "20" }
   },
-  "postCreateCommand": "npm install -g @anthropic-ai/claude-code && pip install --upgrade pip && pip install streamlit",
+  "onCreateCommand": "npm install -g @anthropic-ai/claude-code && pip install --upgrade pip && pip install streamlit",
   "containerEnv": {
     "ANTHROPIC_MODEL": "claude-sonnet-4-6"
   },
