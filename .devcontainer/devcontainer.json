@@ -4,7 +4,7 @@
   "features": {
     "ghcr.io/devcontainers/features/node:1": { "version": "20" }
   },
-  "onCreateCommand": "npm install -g @anthropic-ai/claude-code && pip install --upgrade pip && pip install streamlit && echo 'set -a; source ${CODESPACE_VSCODE_FOLDER}/.env 2>/dev/null; set +a' >> ~/.bashrc",
+  "onCreateCommand": "npm install -g @anthropic-ai/claude-code && pip install --upgrade pip && pip install streamlit && echo 'set -a; source /workspaces/claude-code-intro/.env 2>/dev/null; set +a' >> ~/.bashrc",
   "containerEnv": {
     "ANTHROPIC_MODEL": "claude-sonnet-4-6"
   },
@@ -23,8 +23,5 @@
       ]
     }
   },
-  "hostRequirements": {
-    "cpus": 2,
-    "memory": "8gb"
-  }
+}
 }
