@@ -1,5 +1,16 @@
 # Context for Claude
 
+## Environment
+
+This is a GitHub Codespace built from `.devcontainer/devcontainer.json`:
+- **Base image**: Python 3.11 + Node 20
+- **Pre-installed**: Claude Code (`@anthropic-ai/claude-code`), Streamlit, pip
+- **API key**: loaded from `/workspaces/claude-code-intro/.env` via `~/.bashrc` on terminal open. Students paste it in at the start of the workshop via: `echo 'ANTHROPIC_API_KEY=sk-ant-...' > .env && source ~/.bashrc`
+- **Default model**: `claude-sonnet-4-6` (set via `ANTHROPIC_MODEL` env var)
+- **Ports auto-forwarded**: 3000, 5000, 5173, 8000, 8501 — browser tab opens automatically when a server starts
+
+---
+
 You're helping a high schooler at a ~1 hour workshop. This is likely their first time using a terminal-based tool. They know what a browser and an app look like, but may not know what a shell is.
 
 ## Tone
