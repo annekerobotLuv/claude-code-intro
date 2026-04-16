@@ -7,12 +7,11 @@ Everything you need before, during, and after the workshop.
 | When | What |
 |---|---|
 | ~1 week before | Anthropic workspace + prepaid credits + API key |
-| ~1 week before | Push repo, add Codespaces secret, dry run |
-| **Right after dry run** | **Delete the Codespaces secret** (safety window) |
+| ~1 week before | Push repo, dry run |
 | ~3 days before | Ask students to create GitHub accounts |
-| Morning of workshop | Re-add the Codespaces secret, re-test |
-| During workshop | Share launch link, monitor usage |
-| **Immediately after workshop** | **Delete secret + revoke API key + delete codespaces** |
+| Morning of workshop | Re-test launch link, have API key ready to share |
+| During workshop | Share launch link + API key in Zoom chat, monitor usage |
+| **Immediately after workshop** | **Revoke API key + delete codespaces** |
 
 ---
 
@@ -28,25 +27,15 @@ Everything you need before, during, and after the workshop.
 6. **Check for model allowlist** in the workspace settings — if available, restrict to Sonnet 4.6 (+ Haiku if you want). If the UI doesn't expose this, skip it; the prepaid cap is your real safety net.
 7. Generate an **API key** scoped to the workspace. Copy it.
 
-### 2. Add the key to GitHub Codespaces
-
-1. Go to `github.com/diganelin/claude-code-intro/settings/secrets/codespaces`
-2. **New repository secret** → Name: `ANTHROPIC_API_KEY`, Value: paste the key
-3. Save. GitHub encrypts at rest; you can't view it back, only overwrite or delete.
-
-### 3. Dry run
+### 2. Dry run
 
 Open the launch link yourself: `https://codespaces.new/diganelin/claude-code-intro?quickstart=1`
 
 - Wait ~60s for the container to build
-- Open the terminal, type `claude`
-- At the "Do you want to use this API key?" prompt → pick **Yes (option 1)**. Default is No.
+- Open the terminal, run: `echo 'ANTHROPIC_API_KEY=<your-key>' > .env && source ~/.bashrc`
+- Type `claude` — it should start without a login prompt
 - Build a small Streamlit app end-to-end. Confirm the browser tab pops up when the port is forwarded.
 - Type `/cost` and note the token usage for your later teaching demo.
-
-### 4. After dry run: delete the Codespaces secret
-
-Go back to `github.com/diganelin/claude-code-intro/settings/secrets/codespaces` and **delete** `ANTHROPIC_API_KEY`. Until workshop day, anyone who finds the repo and launches a Codespace just gets a Claude Code that can't authenticate — harmless.
 
 ### 5. Student pre-work (email them ~3 days before)
 
@@ -56,15 +45,16 @@ Ask students to:
 
 ## Morning of workshop
 
-1. **Re-add** the `ANTHROPIC_API_KEY` Codespaces secret at the URL above.
-2. **Re-test** by opening the launch link yourself and typing `claude`. Confirm the API key prompt appears (proves the env var is injecting).
-3. Check the Anthropic dashboard — balance should match what you set up.
+1. **Re-test** by opening the launch link yourself and running `echo 'ANTHROPIC_API_KEY=<your-key>' > .env && source ~/.bashrc && claude`. Confirm it starts without a login prompt.
+2. Check the Anthropic dashboard — balance should match what you set up.
+3. Have the API key ready to paste into Zoom chat.
 
 ## During workshop
 
-- Share the launch link directly in your session chat/doc (not publicly):
-  `https://codespaces.new/diganelin/claude-code-intro?quickstart=1`
-- Remind students: **at the API key prompt, pick Yes (option 1)** — it defaults to No.
+- Share in Zoom chat:
+  1. Launch link: `https://codespaces.new/diganelin/claude-code-intro?quickstart=1`
+  2. API key setup command: `echo 'ANTHROPIC_API_KEY=sk-ant-...' > .env && source ~/.bashrc`
+- Once students have run the command, they type `claude` and it starts without a login prompt.
 - Peek at console.anthropic.com once or twice to confirm spending is on track.
 - If credits run low: Plans & Billing → Add Credits (~1 min via saved card).
 
@@ -72,7 +62,6 @@ Ask students to:
 
 The repo is public, so rotate fast to minimize exposure:
 
-- [ ] Delete the `ANTHROPIC_API_KEY` Codespaces secret
 - [ ] Revoke the API key at console.anthropic.com → Workspace → API Keys
 - [ ] Bulk-delete student codespaces at `github.com/codespaces` (stops any storage fees)
 - [ ] Optionally disable Auto Reload on the Anthropic workspace
